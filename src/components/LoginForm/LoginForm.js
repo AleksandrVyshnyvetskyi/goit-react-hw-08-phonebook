@@ -46,6 +46,10 @@ export default function LoginForm() {
     form.reset();
   };
 
+  const bgd = document.querySelector('.login-screen-bgd');
+  bgd.style.background =
+    'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)), url(https://raw.githubusercontent.com/AleksandrVyshnyvetskyi/goit-react-hw-08-phonebook/main/src/components/phonebook/img/bgd-login-screen.jpg)';
+  bgd.style.backgroundSize = 'cover';
   return (
     <div className="loginScreen-box">
       <h1 className="phonebook-title loginScreen-title">Log in to Phonebook</h1>

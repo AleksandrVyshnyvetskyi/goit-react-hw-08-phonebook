@@ -8,20 +8,20 @@ import PhonebookForm from 'components/phonebook/Phonebook';
 import PhonebookList from 'components/phonebook/PhonebookList';
 import PhonebookFilter from 'components/phonebook/PhonebookFilter';
 import Loader from 'components/loader/Loader';
-// import { toggleBGD } from 'components/toggleBG/togleBGD';
+// import { toggleBGD } from 'components/toggleBGD/toggleBGD';
 
 export default function Contacts() {
   const dispatch = useDispatch();
   const contacts = useSelector(getFilteredContacts);
   const { isLoading, error } = useSelector(getState);
   const filter = useSelector(getFilter);
-
+  // toggleBGD();
+  const bgd = document.querySelector('.login-screen-bgd');
+  bgd.style.background =
+    'linear-gradient( rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/AleksandrVyshnyvetskyi/goit-react-hw-08-phonebook/main/src/components/phonebook/img/background.jpg)';
+  bgd.style.backgroundSize = 'cover';
   useEffect(() => {
     dispatch(fetchContacts());
-    // toggleBGD();
-    const bgd = document.querySelector('.login-screen-bgd');
-    bgd.style.background =
-      'linear-gradient( rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.5)), url(https://raw.githubusercontent.com/AleksandrVyshnyvetskyi/goit-react-hw-08-phonebook/main/src/components/phonebook/img/background.jpg)';
   }, [dispatch]);
   return (
     <>

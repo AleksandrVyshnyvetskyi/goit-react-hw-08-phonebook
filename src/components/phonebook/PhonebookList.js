@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import Notiflix from 'notiflix';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { removeContact } from 'redux/operations/operations';
+import { removeContact } from 'redux/contacts/contactsOperations';
 import man from './img/man.jpg';
 import woman from './img/woman.jpg';
 import nogender from './img/nogender.png';
@@ -17,6 +17,9 @@ export default function PhonebookList({ contactsList }) {
       return nogender;
     }
   }
+
+  console.log(contactsList);
+
   const removeMessage = () => {
     return Notiflix.Report.failure('Remove', 'Contact removed', 'Close', {
       svgSize: '200px',
@@ -36,7 +39,7 @@ export default function PhonebookList({ contactsList }) {
         <img src={icon(gender)} alt="contact-icon" className="gender-icon" />
 
         <a href={`tel:${number}`}>
-          {name}: {number}
+          {name}: <span>{number}</span>
         </a>
 
         <IconButton
@@ -55,7 +58,7 @@ export default function PhonebookList({ contactsList }) {
               '&.MuiSvgIcon-root:hover': {
                 color: '#e65100',
               },
-              color: '#fbb845',
+              color: '#fda40a',
             }}
           />
         </IconButton>

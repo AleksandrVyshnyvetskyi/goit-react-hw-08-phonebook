@@ -1,5 +1,7 @@
 import { useDispatch } from 'react-redux';
 import Notiflix from 'notiflix';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { removeContact } from 'redux/operations/operations';
 import man from './img/man.jpg';
 import woman from './img/woman.jpg';
@@ -32,17 +34,31 @@ export default function PhonebookList({ contactsList }) {
     return (
       <li key={id} className="list-item">
         <img src={icon(gender)} alt="contact-icon" className="gender-icon" />
-        <p>
+
+        <a href={`tel:${number}`}>
           {name}: {number}
-          {''}
-        </p>
-        <button
-          className="delete-btn"
-          type="button"
+        </a>
+
+        <IconButton
           onClick={() => dispatch(removeContact(id), removeMessage())}
+          aria-label="delete"
+          size="large"
+          sx={{
+            '&.MuiButtonBase-root:hover': {
+              backgroundColor: 'rgba(255, 162, 0, 0.2) ',
+            },
+          }}
         >
-          Delete
-        </button>
+          <DeleteIcon
+            fontSize="inherit"
+            sx={{
+              '&.MuiSvgIcon-root:hover': {
+                color: '#e65100',
+              },
+              color: '#fbb845',
+            }}
+          />
+        </IconButton>
       </li>
     );
   });
